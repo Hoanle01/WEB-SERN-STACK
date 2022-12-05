@@ -37,7 +37,7 @@ const login = async (req, res) => {
             email
         }
     })
-    console.log(user)
+    
     if (user) {
        
        

@@ -1,9 +1,12 @@
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
+import userApi from 'api/userApi';
+import DeleteOrder from 'features/Admin/components/AdminProduct/components/DeleteOrder';
 import moment from 'moment';
 import React from 'react';
 
 function OrderItem({ order }) {
-   console.log("order",order)
+  
+
   return (
    
     <li className='order-item'>
@@ -22,6 +25,8 @@ function OrderItem({ order }) {
         })}
       </span>
       <span className='order-status'>{order.status}</span>
+      
+        <DeleteOrder id={order.id} status={order.status}/>
     </li>
   );
 }

@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 function AdminTable(props) {
   const { columns, data, loading, limit = 6 } = props;
-  console.log("productadmin",data)
+ 
   return (
     <Fragment>
       <Table

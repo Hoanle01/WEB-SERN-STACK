@@ -115,17 +115,17 @@
 
               .code {
                 width: 100%;
-                max-width: 100px;
+                max-width: 90px;
               }
 
               .day {
                 width: 100%;
-                max-width: 80px;
+                max-width: 95px;
               }
 
               .order-product {
                 width: 100%;
-                max-width: 300px;
+                max-width: 297px;
               }
 
               .total-price {
@@ -140,12 +140,17 @@
 
               .order-status {
                 width: 100%;
-                max-width: 70px;
+                max-width: 73px;
               }
 
               .order-address {
                 width: 100%;
                 max-width: 165px;
+              }
+              .order-cancel{
+                width: 100%;
+                max-width: 70px;
+              
               }
             }
 
@@ -176,7 +181,7 @@
 
               .order-product,
               .order-address {
-                text-align: left;
+                text-align: justify;
               }
 
               & + .order-item {

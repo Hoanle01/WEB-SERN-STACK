@@ -1,6 +1,7 @@
 import { Button, Input, Tag } from 'antd';
 import adminApi from 'api/adminApi';
 import { statusOrder } from 'constant';
+import { statusShiper } from 'constant/statusShiper';
 // import { adminLogout } from 'features/Admin/adminSlice';
 import AdminTable from 'features/Admin/common/AdminTable';
 import moment from 'moment';
@@ -218,9 +219,20 @@ function AdminOrder() {
           : status === 2
           ? statusOrder.PROCESSING
           : status === 3
-          ? statusOrder.COMPLETED
+          ? statusOrder.PACKING
           : status === 4
-          ? statusOrder.DECLINE
+          ? statusOrder.TRANSPORT
+          : status === 4
+          ? statusOrder.TRANSPORT
+          : status === 5
+          ? statusOrder.TRANSPORT
+          :status ===6
+          ? statusShiper.RECEVIE
+          : status === 7
+          ? statusShiper.DELIVERY
+          : status === 8
+          ? statusShiper.COMPLETED
+          
           : '',
       filters: [
         {

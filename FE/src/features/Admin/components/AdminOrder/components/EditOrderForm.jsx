@@ -1,5 +1,6 @@
 import { Button, Select } from 'antd';
 import { statusOrder } from 'constant';
+import { statusShiper } from 'constant/statusShiper';
 import React, { useRef, useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
 const { Option } = Select;
@@ -15,12 +16,26 @@ const STATUS_ORDER = [
   },
   {
     value: 3,
-    title: statusOrder.COMPLETED,
+    title: statusOrder.PACKING,
   },
   {
     value: 4,
+    title: statusOrder.TRANSPORT,
+  },
+  {
+    value: 5,
     title: statusOrder.DECLINE,
   },
+  {
+    value: 7,
+    title: statusShiper.DELIVERY,
+  },
+  {
+    value: 8,
+    title: statusShiper.COMPLETED,
+  }
+  
+
 ];
 
 function EditOrderForm(props) {

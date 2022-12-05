@@ -77,7 +77,7 @@ function UserOrder({ hideLoading, showLoading }) {
       return newData;
     });
 
-  console.log('haxa',newOrder )
+ 
     setOrderList(newOrder);
 
   }, []);
@@ -88,7 +88,7 @@ function UserOrder({ hideLoading, showLoading }) {
       setLoading(true);
       try {
         const rs = await userApi.getOrders(queryParams);
-         console.log("mẻt",rs)  
+        
         rs.data && formatData(rs.data);
         // setPagination(rs.pagination);
       } catch (err) {
@@ -109,6 +109,7 @@ function UserOrder({ hideLoading, showLoading }) {
         <li className='order-address'>Địa Chỉ Giao Hàng</li>
         <li className='total-price'>Tổng Tiền</li>
         <li className='order-status'>Trạng Thái</li>
+        <li className='order-cancel'>Hủy</li>
       </ul>
       {loading ? (
         <Fragment>

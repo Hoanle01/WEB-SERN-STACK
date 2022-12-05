@@ -13,7 +13,7 @@ function ProductConent(props) {
   const [loading, setLoading] = useState(true);
   const [productList, setProductList] = useState([]);
   const [data, setData] = useState([]);
-  console.log("data",data)
+
   const dispatch =  useDispatch();
 
   const mapData = useCallback((data) => {
@@ -45,6 +45,7 @@ function ProductConent(props) {
       if (res.status==200 && res.success==true) {
         mapData(res.data);
         setData(res.data);
+     
       }
     } catch (error) {
       toast.error('Error');

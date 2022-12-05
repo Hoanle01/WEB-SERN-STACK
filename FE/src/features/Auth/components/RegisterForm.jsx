@@ -20,7 +20,7 @@ function RegisterForm(props) {
       .required('Please enter your password')
       .min(6)
       .oneOf([yup.ref('password')], 'Password does not match'),
-    phone: yup
+    numberPhone: yup
       .string()
       .required('Please enter your phone number')
       .matches(/^(0[3|5|7|8|9])+([0-9]{8})$/, 'Phone number is not valid'),
@@ -32,7 +32,7 @@ function RegisterForm(props) {
       email: '',
       password: '',
       password_confirmation: '',
-      phone: undefined,
+      numberPhone: undefined,
     },
     resolver: yupResolver(schema),
   });
@@ -73,7 +73,7 @@ function RegisterForm(props) {
         
         <InputField
           placeholder='Nhập số điện thoại'
-          name='phone'
+          name='numberPhone'
           form={form}
           label='Số điện thoại'
         />

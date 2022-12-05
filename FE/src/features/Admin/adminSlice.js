@@ -5,7 +5,7 @@ import { StorageKeys } from 'constant';
 
 export const login = createAsyncThunk('admin/login', async (payload) => {
   const  {data}   = await adminApi.login(payload);
-  console.log("123",data)
+
   localStorage.setItem(StorageKeys.ADMIN, JSON.stringify(data));
   return data;
 });

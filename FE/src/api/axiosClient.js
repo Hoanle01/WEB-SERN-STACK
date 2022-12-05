@@ -57,6 +57,33 @@ axiosClient.interceptors.request.use(
       config.headers.token= token ? `${token}` : '';
     }
 
+
+
+
+    const URLSShiper = [
+     
+      '/shiper',
+      '/shiper/orders',
+      '/shiper/history-order'
+    ];
+    const dyURL = [
+      '/shiper',
+     ' /shiper/orders',
+     
+      '/shiper/history-order'
+    ]
+
+    
+    const dynamicURLNeedShiperToken = dyURL.some(item => {
+      return config.url.includes(item)
+    })
+
+    if (URLSShiper.includes(config.url) || dynamicURLNeedShiperToken) {
+      const token = localStorage.getItem(StorageKeys.TOKEN);
+      config.headers.token= token ? `${token}` : '';
+    }
+
+
     return config;
   },
   function (error) {
@@ -90,7 +117,7 @@ axiosClient.interceptors.response.use(
         draggable: true,
         progress: 0,
       });
-      if (config.url.includes('/user') && !config.url.includes('/admin')) {
+      if (config.url.includes('/user') && !config.url.includes('/admin')&& !config.url.includes('/shiper')) {
         dispatch(logout());
         dispatch(openModal());
         dispatch(logoutCart());

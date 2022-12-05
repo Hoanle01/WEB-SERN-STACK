@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 function DeleteProduct({ id, onDelete }) {
   const handleDelete = async () => {
     try {
-      const {res} = await adminApi.deleteProduct(id);
+      const res = await adminApi.deleteProduct(id);
       if(res.status === 200 && res.success === true){
         onDelete();
         toast.success('Xóa thành công!');

@@ -24,6 +24,21 @@ function SidebarAdmin() {
         title: 'Người dùng',
         path: '/admin/users',
       },
+      {
+        
+          id: 4,
+          iconClassName: 'fa fa-line-chart',
+          title: 'Thống kê',
+          path: '/admin/report',
+        
+      } ,{
+        
+        id: 6,
+        iconClassName: 'fas fa-shipping-fast',
+        title: 'Người Giao Hàng',
+        path: '/admin/manager-shiper',
+      
+    }
     ];
   }, []);
   return (

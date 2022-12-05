@@ -21,7 +21,7 @@ const data = await userApi.login(payload);
 
  
   // //save data to local storage
-  localStorage.setItem(StorageKeys.TOKEN, data.token);
+   localStorage.setItem(StorageKeys.TOKEN, data.token);
   localStorage.setItem(StorageKeys.USER, JSON.stringify(user));
 
    return data;
@@ -70,7 +70,7 @@ export const userSlice = createSlice({
       const user = {
         name: action.payload.name,
         id: action.payload.id,
-        token: action.payload.token,
+         token: action.payload.token,
       }
       state.current = user;
     },

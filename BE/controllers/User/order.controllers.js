@@ -292,52 +292,7 @@ const updateOrderAssignment = async (req, res) => {
     }
 
 }
-const updateOrderSuccess = async (req, res) => {
-    const { id } = req.params
-    try {
-        const detailOrder = await Order.findOne({
-            where: {
-                id
-            }
-        })
-        if (detailOrder) {
-            detailOrder.status_order = "Hoàn Thành"
 
-
-
-        }
-
-
-
-        await detailOrder.save()
-        res.status(200).send(detailOrder)
-
-    } catch (error) {
-        res.status(500).send(error)
-
-
-    }
-}
-const updateOrderCancel = async (req, res) => {
-    const { id } = req.params
-    try {
-        const detailOrder = await Order.findOne({
-            where: {
-                id
-            }
-        })
-
-        detailOrder.status_order = "Đã bị hủy"
-
-        await detailOrder.save()
-        res.status(200).send(detailOrder)
-
-    } catch (error) {
-        res.status(500).send(error)
-
-
-    }
-}
 
 
 const deleteOrder = async (req, res) => {
@@ -350,7 +305,7 @@ const deleteOrder = async (req, res) => {
             }
         })
       if(orderDetail.status===3||orderDetail.status===4){
-       res.status(500).send({status:500,success:false})
+       res.status(200).send({status:500,success:false})
       }
       else{
          await Order.destroy({

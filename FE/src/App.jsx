@@ -7,6 +7,7 @@ import HotPromotion from 'features/Home/components/HotPromotion';
 import SlideHome from 'features/Home/components/SlideHome';
 import ProductList from 'features/Product/components/ProductList';
 import ProductPage from 'features/Product/page/ProductPage';
+import ShiperPage from 'features/Shiper';
 //import Home from 'features/Home';
 import React, { Fragment, Suspense } from 'react';             
 import { Route, Switch } from 'react-router';
@@ -23,6 +24,7 @@ function App() {
       <Suspense fallback={<div className='loading-lazy'/>}>
         <Switch>
           <Route path='/admin' component={AdminPage} />
+          <Route path='/shiper' component={ShiperPage} />
           <Route>
          <Header />
            

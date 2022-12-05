@@ -3,28 +3,7 @@ const { or } = require('sequelize')
 const { Order, User, OrderDetail, sequelize, Product, Address } = require('../../models')
 const orderdetail = require('../../models/orderdetail')
 
-const cretaeOrders = async (req, res) => {
 
-    const { status, total, products, address_id } = req.body
-    console.log(status)
-    const { user } = req
-    console.log(user.id)
-
-    try {
-
-        const newOrders = await Order.create({ status, total, index_user: user.id, index_address: address_id })
-
-
-        const productDetail = await products.forEach(async (item) => {
-            const newOrdersDetail = await OrderDetail.create({ product_quantity: item.quantity, index_product: item.id, product_quantity: item.quantity, index_order: newOrders.id })
-
-        })
-        res.status(201).send({ status: 200, success: true, data: newOrders })
-    } catch (error) {
-        res.status(500).send(error)
-    }
-
-}
 const getOrder = async (req, res) => {
     //láy sau giấu ?
     const { user } = req
@@ -159,26 +138,12 @@ const getOrder = async (req, res) => {
         res.status(500).send(error.message)
     }
 }
-const getDetailOrder = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const detailOrder = await Order.findOne({
-            where: {
-                id
-            }
-        })
-        res.status(200).send(detailOrder)
 
-    } catch (error) {
-        res.status(500).send(error)
-
-    }
-}
 const updateStatusOrder = async (req, res) => {
     const { id } = req.params
   const {status}=req.body
  
-console.log(status)
+
         try {
             const detailOrder = await Order.findOne({
                 where: {
@@ -201,52 +166,8 @@ console.log(status)
      
 
 }
-const updateOrderSuccess = async (req, res) => {
-    const { id } = req.params
-    try {
-        const detailOrder = await Order.findOne({
-            where: {
-                id
-            }
-        })
-        if (detailOrder) {
-            detailOrder.status_order = "Hoàn Thành"
 
 
-
-        }
-
-
-
-        await detailOrder.save()
-        res.status(200).send(detailOrder)
-
-    } catch (error) {
-        res.status(500).send(error)
-
-
-    }
-}
-const updateOrderCancel = async (req, res) => {
-    const { id } = req.params
-    try {
-        const detailOrder = await Order.findOne({
-            where: {
-                id
-            }
-        })
-
-        detailOrder.status_order = "Đã bị hủy"
-
-        await detailOrder.save()
-        res.status(200).send(detailOrder)
-
-    } catch (error) {
-        res.status(500).send(error)
-
-
-    }
-}
 
 
 const deleteOrder = async (req, res) => {
@@ -263,10 +184,58 @@ const deleteOrder = async (req, res) => {
 
     }
 }
+const totalOrder=async(req,res)=>{
+
+    try {
+
+        const [results] = await sequelize.query(`
+        SELECT sum(total) as total FROM orders `)
+       
+        res.status(200).send(results)
+
+    } catch (error) {
+        res.status(500).send(error.message)
+
+
+    }
+}
+const countOrder=async(req,res)=>{
+
+    try {
+
+        const [results] = await sequelize.query(`
+        SELECT count(id) as count FROM orders `)
+       
+        res.status(200).send(results)
+
+    } catch (error) {
+        res.status(500).send(error.message)
+
+
+    }
+}
+const OrderMonth=async(req,res)=>{
+
+    try {
+
+        const [results] = await sequelize.query(`
+        SELECT date_format(createdAt,"%m/%Y") as date,sum(total)as total FROM orders
+        group by month(createdAt) `)
+       
+        res.status(200).send(results)
+
+    } catch (error) {
+        res.status(500).send(error.message)
+
+
+    }
+}
 module.exports = {
 
     getOrder,
-  
+  countOrder,
     updateStatusOrder,
-    deleteOrder
+    deleteOrder,
+    totalOrder,
+    OrderMonth
 }

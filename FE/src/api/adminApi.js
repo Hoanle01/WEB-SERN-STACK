@@ -39,6 +39,27 @@ const adminApi = {
     const url = `/admin/user/${id}`;
     return axiosClient.delete(url);
   },
+  totalOrder(){
+    const url = '/admin/report';
+    return axiosClient.get(url);
+  },
+  countOrder(){
+    const url = '/admin/countOrder';
+    return axiosClient.get(url);
+  },countProduct(){
+    const url = '/admin/countproduct';
+    return axiosClient.get(url);
+  },ordertoMonth(){
+    const url = '/admin/ordermonth';
+    return axiosClient.get(url);
+  },producthasbuy(){
+    const url = '/admin/producthasbuy';
+    return axiosClient.get(url);
+  },
+  managerShiper(){
+    const url = '/admin/manager-shiper';
+    return axiosClient.get(url);
+  }
 }
 
 export default adminApi;

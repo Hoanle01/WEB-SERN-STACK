@@ -6,7 +6,7 @@ import Modal from 'react-modal/lib/components/Modal';
 import EditProductContainer from './EditProductContainer';
 
 function EditProduct(props) {
-  console.log("editproduct",props.data)
+
   const [openModal, setOpenModal] = useState(false);
   return (
     <Fragment>

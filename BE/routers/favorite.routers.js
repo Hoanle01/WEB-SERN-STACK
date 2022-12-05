@@ -1,5 +1,5 @@
 const express=require("express")
-const { createFavorite, deleteFavorite, getAllFavorite, getIsFavorite, getAllFavoriteUser } = require("../controllers/Addmin/favorite.controllers")
+const { createFavorite, deleteFavorite, getAllFavorite, getIsFavorite, getAllFavoriteUser } = require("../controllers/User/favorite.controllers")
 const { authenticate } = require("../middlewares/auth/authenticate")
 const { checkExitsFavorite } = require("../middlewares/validation/checkExit")
 

@@ -7,11 +7,13 @@ import SidebarAdmin from './components/SidebarAdmin';
 import AdminProduct from './components/AdminProduct';
 import AdminOrder from './components/AdminOrder';
 import AdminUser from './components/AdminUser';
+import Report from './components/AdminReport';
+import ShiperOrderAdmin from './components/ShiperOrderAdmin';
 
 function AdminPage() {
   const { path } = useRouteMatch();
   const admin = useSelector((state) => state.admin.current);
-  console.log(admin)
+
   if (!admin) return <AdminLogin />;
   return (
     <section className='admin'>
@@ -24,6 +26,10 @@ function AdminPage() {
             <Route path={`${path}/products`} component={AdminProduct} />
             <Route path={`${path}/orders`} component={AdminOrder} />
             <Route path={`${path}/users`} component={AdminUser} />
+            <Route path={`${path}/report`} component={Report} />
+            <Route path={`${path}/manager-shiper`} component={ShiperOrderAdmin} />
+            
+            
             <Route />
           </Switch>
         </div>

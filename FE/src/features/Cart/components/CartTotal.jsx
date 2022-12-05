@@ -66,12 +66,16 @@ function CartTotal({ showLoading, hideLoading }) {
       showLoading();
       try {
         const rs = await userApi.order(dataSend);
-        
+        console.log("statusOrrder",rs)
         if (rs.status === 200) {
           const action = paymentSuccess();
           dispatch(action);
           toast.success('Đặt hàng thành công!');
           history.replace(`${path.url}/success`, rs.data.id);
+        }
+        else if(rs.status===403){
+          
+          toast.warning("Bạn không thể đặt hàng")
         }
       } catch (error) {
         console.log(error);

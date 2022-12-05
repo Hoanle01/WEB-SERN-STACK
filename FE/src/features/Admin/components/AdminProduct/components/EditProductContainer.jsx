@@ -25,7 +25,7 @@ function EditProductContainer({ data, showLoading, hideLoading }) {
 
       date_update: d.date_update,
     }; 
-    console.log("124",typeof((dataMap.sale)))
+  
     setProduct(dataMap);
   };
 

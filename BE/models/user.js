@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       
       this.hasMany(Favorite,{foreignKey:"index_user"})
       this.hasMany(Order,{foreignKey:"index_user",as:"user"})
-      this.hasMany(Order,{foreignKey:"index_shipper"})
+      this.hasMany(Order,{foreignKey:"index_shipper",as:"shiper"})
       this.belongsTo(Address,{foreignKey:"index_address",as:"address"})
     
 

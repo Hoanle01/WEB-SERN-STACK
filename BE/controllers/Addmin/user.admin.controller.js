@@ -1,3 +1,4 @@
+const { Op } = require("sequelize")
 const {User,Address}=require("../../models")
 
 
@@ -10,7 +11,9 @@ const getAllUser=async (req,res)=>{
         }
     ],
         where:{
-            type:"CLIENT"
+            type:{
+                [Op.not]:"ADMIN"
+            }
         }
     })
     res.status(200).send({data:userList,status:200,success:true})
@@ -30,7 +33,20 @@ const deleteUser=async(req,res)=>{
         
     }
 }
+const updateType=async(req,res)=>{
+    const {role}=req.body
+    const {id}=req.params
+    try {
+        const updateType=await User.update({type:role},{where:{
+            id
+    }})
+        res.status(200).send({success:true,status:200})
+    } catch (error) {
+        
+    }
+}
 module.exports={
     getAllUser,
-    deleteUser
+    deleteUser,
+    updateType
 }

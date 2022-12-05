@@ -1,5 +1,5 @@
 const { Op } = require("sequelize")
-const { Product, Categories, Production } = require("../../models")
+const { Product, Categories, Production, sequelize } = require("../../models")
 
 
 const createProduct = async (req, res) => {
@@ -159,12 +159,43 @@ const getAllProduct = async (req, res) => {
       res.status(500).send(error.message)
     }
   }
-  const dashBoard=(req,res)=>{
-    
+  const countProduct=async(req,res)=>{
+    try {
+
+      const [results] = await sequelize.query(`
+      SELECT count(id) as count FROM products `)
+     
+      res.status(200).send(results)
+
+  } catch (error) {
+      res.status(500).send(error.message)
+
+
+  }
+  }
+  const productHasBuy=async(req,res)=>{
+    try {
+
+      const [results] = await sequelize.query(`
+      SELECT categories.name,round(((sum(orderdetails.product_quantity*products.price))/(   SELECT  (sum(orderdetails.product_quantity*products.price)) as total FROM orderdetails
+inner join products on products.id=orderdetails.index_product))*100,2)  as 
+percent FROM orderdetails
+inner join products on products.id=orderdetails.index_product
+inner join categories on categories.id=products.index_categories
+group by categories.name`)
+   
+  res.status(200).send(results)
+  } catch (error) {
+      res.status(500).send(error.message)
+
+
+  }
   }
   module.exports={
     getAllProduct,
     createProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    countProduct,
+    productHasBuy
   }

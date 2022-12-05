@@ -16,7 +16,7 @@ import UserLocation from './components/UserLocation';
 import UserOrder from './components/UserOrder';
 import { useSelector } from 'react-redux';
 
-function User(props) {
+function Shiper(props) {
   const isLoggedIn = useSelector((state) => state.user.current);
 
   const { url } = useRouteMatch();
@@ -79,4 +79,4 @@ function User(props) {
   );
 }
 
-export default User;
+export default Shiper;

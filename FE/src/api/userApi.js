@@ -51,13 +51,17 @@ const userApi = {
     return axiosClient.patch(url, data);
   },
   order(data) {
-    console.log("order",data)
+  
     const url = '/order';
     return axiosClient.post(url, data);
   },
   getOrders(params) {
     const url = '/order';
     return axiosClient.get(url, {params : params});
+  },
+  deleteOrder(id){
+    const url = `/order/${id}`;
+    return axiosClient.delete(url);
   }
 };
 
